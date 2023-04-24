@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   pipex.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: phelebra <xhelp00@gmail.com>               +#+  +:+       +#+        */
+/*   By: phelebra <phelebra@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/12 09:08:46 by phelebra          #+#    #+#             */
-/*   Updated: 2023/04/19 15:13:53 by phelebra         ###   ########.fr       */
+/*   Updated: 2023/04/24 10:25:07 by phelebra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,5 +14,7 @@
 # define PIPEX_H
 
 # include "libft.h"
+# include <sys/types.h>
+
 
 #endif

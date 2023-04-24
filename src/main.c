@@ -6,8 +6,14 @@
 /*   By: phelebra <phelebra@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/19 15:17:47 by phelebra          #+#    #+#             */
-/*   Updated: 2023/04/21 16:35:27 by phelebra         ###   ########.fr       */
+/*   Updated: 2023/04/24 10:23:47 by phelebra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/pipex.h"
+
+void	pipex(int f1, int f2)
+{
+	pid_t	parent;
+	
+}
