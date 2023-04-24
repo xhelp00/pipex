@@ -6,7 +6,7 @@
 /*   By: phelebra <phelebra@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/12 09:08:46 by phelebra          #+#    #+#             */
-/*   Updated: 2023/04/24 10:25:07 by phelebra         ###   ########.fr       */
+/*   Updated: 2023/04/24 15:00:24 by phelebra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,11 @@
 
 # include "libft.h"
 # include <sys/types.h>
+# include <sys/wait.h>
+# include <fcntl.h>
+# include <stdio.h>
+# include <stdlib.h>
+# include <unistd.h>
 
 
 #endif
