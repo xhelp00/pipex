@@ -39,9 +39,10 @@ fork
 wait(0)
 |    
 - for doing stuff in parent process only we may use if (pid != 0)
+- when fork() fails it returns -1
 - child process has its own copy of variables in memory when forked (different place in memory even tho that values are the same)
 - process id of current process can be called by getpid(), or getppid() if we want to call parent process id (#include <sys/wait.h>)
 - if (wait(NULL) == -1) can be used for checking that there is nothing else to be waiting for
 - wait() should be usually called by the end of program in case that we are forking processes
-
+- pipe() function takes 2 ints - filedesc,
 
