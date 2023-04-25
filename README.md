@@ -23,3 +23,21 @@ b. Redirect the standard input and output using dup2().
 Wait for both child processes to terminate using waitpid().
 
 Print an error message if any of the system calls or commands fail.
+********************************
+STUDY:
+
+- fork() creates child process that runs along with the "main" one, function fork also return number representing id of process
+- child process always has pid 0
+- wait(0) function that make parent process wait until child process is over
+main/parent
+|
+fork
+| \	pid 0
+|  \
+|  /  do smth
+| /   
+wait(0)
+|    
+- for doing stuff in parent process only we may use if (pid != 0)
+- child process has its own copy of variables in memory when forked (different place in memory even tho that values are the same)
+
