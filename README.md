@@ -48,4 +48,14 @@ wait(0)
 - execlp() execution function REPLACE current process with whatever is executed as a passed command (it means that function called in main after execlp is called will not be executed!)
  - therefore exec should NOT be called in main/parent process but in child process
  - in case that we call exec in parent process that has been forked before - we create a zombie child XD
+ - execlp replace the process ONLY in case that command exists, in case of error execlp returns -1
+ - execve function has arguments as follows
+ int execve( const char * path, 	A path name that identifies the new process image file.
+            char * const argv[], 	An array of character pointers to NULL-terminated strings. Your application must ensure that the last member of this array is a NULL pointer. These strings constitute the argument list available to the new process image. The value in argv[0] must point to a filename that's associated with the process being started.
+            char * const envp[] );  An array of character pointers to NULL-terminated strings. These strings constitute the environment for the new process image. Terminate the envp array with a NULL pointer.
+
+ - int WIFEXITED(int status); Query status to see if a child process ended normally
+ - file descriptors - unique across one process, file descriptor 0 = STDIN, therefore read(0) == scanf, file descriptor 1 = STDOUT, file descriptor 2 = STDERR.... these 3 fd gets open in every process automatically 
+ - dup function gets fd and duplicates it
+ - dup2 function gets two fds - file descriptor and other one that gets replaced (eg. dup2(fd, STDOUT_FILENO) replaces stdout by fd)
  
