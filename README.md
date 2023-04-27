@@ -45,4 +45,7 @@ wait(0)
 - if (wait(NULL) == -1) can be used for checking that there is nothing else to be waiting for
 - wait() should be usually called by the end of program in case that we are forking processes
 - pipe() function takes 2 ints - filedesc,
-
+- execlp() execution function REPLACE current process with whatever is executed as a passed command (it means that function called in main after execlp is called will not be executed!)
+ - therefore exec should NOT be called in main/parent process but in child process
+ - in case that we call exec in parent process that has been forked before - we create a zombie child XD
+ 
