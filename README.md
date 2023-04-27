@@ -1,4 +1,4 @@
-Battle plan:
+## Battle plan:
 
 Validate the input arguments:
 a. Check that there are exactly 4 arguments passed to the program.
@@ -24,7 +24,7 @@ Wait for both child processes to terminate using waitpid().
 
 Print an error message if any of the system calls or commands fail.
 ********************************
-STUDY:
+## STUDY:
 
 - fork() creates child process that runs along with the "main" one, function fork also return number representing id of process
 - child process always has pid 0
@@ -53,9 +53,8 @@ wait(0)
  int execve( const char * path, 	A path name that identifies the new process image file.
             char * const argv[], 	An array of character pointers to NULL-terminated strings. Your application must ensure that the last member of this array is a NULL pointer. These strings constitute the argument list available to the new process image. The value in argv[0] must point to a filename that's associated with the process being started.
             char * const envp[] );  An array of character pointers to NULL-terminated strings. These strings constitute the environment for the new process image. Terminate the envp array with a NULL pointer.
-
- - int WIFEXITED(int status); Query status to see if a child process ended normally
- - file descriptors - unique across one process, file descriptor 0 = STDIN, therefore read(0) == scanf, file descriptor 1 = STDOUT, file descriptor 2 = STDERR.... these 3 fd gets open in every process automatically 
- - dup function gets fd and duplicates it
- - dup2 function gets two fds - file descriptor and other one that gets replaced (eg. dup2(fd, STDOUT_FILENO) replaces stdout by fd)
- 
+- exec function runs executable directly and NOT through out bash - therefore we cannot use | to chain more commands as we do it in bash
+- int WIFEXITED(int status); Query status to see if a child process ended normally
+- file descriptors - unique across one process, file descriptor 0 = STDIN, therefore read(0) == scanf, file descriptor 1 = STDOUT, file descriptor 2 = STDERR.... these 3 fd gets open in every process automatically 
+- dup function gets fd and duplicates it
+- dup2 function gets two fds - file descriptor and other one that gets replaced (eg. dup2(fd, STDOUT_FILENO) replaces stdout by fd)
