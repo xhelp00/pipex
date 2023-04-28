@@ -6,7 +6,7 @@
 #    By: phelebra <phelebra@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/04/11 17:20:39 by phelebra          #+#    #+#              #
-#    Updated: 2023/04/21 16:38:05 by phelebra         ###   ########.fr        #
+#    Updated: 2023/04/28 13:44:59 by phelebra         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,19 +18,16 @@ BOLD	:= \033[1m
 RED		:= \033[31;1m
 GREEN	:= \033[32;1m
 RESET	:= \033[0m
-#OBJ = obj/commands_px.o obj/commands_rrx.o obj/commands_rx.o obj/commands_sx.o \
-		obj/execute.o obj/fill_stack.o obj/rotate_ab.o obj/rotate_ba.o \
-		obj/sort.o obj/util_stack_2.o obj/util_stack.o obj/util.o
-#OBJ_M = obj/push_swap.o
-#OBJ_BONUS = obj/checker.o
+OBJ = obj/main.o obj/utils.o
+OBJ_BONUS = obj/utils.o obj/bonus.o
 LIBFT = obj/libft/libft.o
 LIBFT_DIR = src/libft
-NAME_H = include/push_swap.h
+NAME_H = include/pipex.h
 
-all: $(NAME) $(BONUS)
+all: $(NAME) 
 
-$(NAME): $(LIBFT) $(OBJ) $(OBJ_M) $(NAME_H) 
-	$(CC) $(OBJ) $(OBJ_M) $(LIBFT) -o $(NAME)
+$(NAME): $(LIBFT) $(OBJ) $(NAME_H) 
+	$(CC) $(OBJ) $(LIBFT) -o $(NAME)
 	@echo "⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣠⣶⣶⣶⣶⣶⣶⣶⠖⠀⠀⢠⣶⣶⣶⣶⣶⣶⡶⣶⣶⣶⣶⣶⣶⣶⣶⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀"
 	@echo "⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣠⣾⣿⣿⣿⣿⣿⣿⠟⠁⠀⠀⠀⢸⣿⣿⣿⣿⡿⠋⠀⣿⣿⣿⣿⣿⣿⣿⣿⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀"
 	@echo "⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣠⣾⣿⣿⣿⣿⣿⣿⠟⠁⠀⠀⠀⠀⠀⢘⣿⣿⡿⠋⠀⠀⠀⣿⣿⣿⣿⣿⣿⣿⣿⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀"
@@ -51,8 +48,8 @@ $(NAME): $(LIBFT) $(OBJ) $(OBJ_M) $(NAME_H)
 obj/%.o: src/%.c
 	$(CC) -g -Wall -Wextra -Werror -c $< -o $@
 
-$(BONUS): $(LIBFT) $(OBJ) $(OBJ_BONUS) $(NAME_H) 
-	$(CC) $(OBJ) $(OBJ_BONUS) $(LIBFT) -o $(BONUS)
+$(BONUS): $(LIBFT) $(OBJ_BONUS) $(NAME_H) 
+	$(CC) $(OBJ_BONUS) $(LIBFT) -o $(BONUS)
 	@echo "⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣠⣶⣶⣶⣶⣶⣶⣶⠖⠀⠀⢠⣶⣶⣶⣶⣶⣶⡶⣶⣶⣶⣶⣶⣶⣶⣶⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀"
 	@echo "⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣠⣾⣿⣿⣿⣿⣿⣿⠟⠁⠀⠀⠀⢸⣿⣿⣿⣿⡿⠋⠀⣿⣿⣿⣿⣿⣿⣿⣿⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀"
 	@echo "⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣠⣾⣿⣿⣿⣿⣿⣿⠟⠁⠀⠀⠀⠀⠀⢘⣿⣿⡿⠋⠀⠀⠀⣿⣿⣿⣿⣿⣿⣿⣿⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀"
