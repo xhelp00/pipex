@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: phelebra <phelebra@student.42.fr>          +#+  +:+       +#+        */
+/*   By: phelebra <xhelp00@gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/21 16:34:32 by phelebra          #+#    #+#             */
-/*   Updated: 2023/04/28 16:11:39 by phelebra         ###   ########.fr       */
+/*   Updated: 2023/04/28 21:16:06 by phelebra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,8 +43,13 @@ char	*find_path(char *cmd, char **env)
 		free(slashed);
 		if (access(path, F_OK) == 0)
 			return (path);
+		free(path);
 		i++;
 	}
+	i = -1;
+	while (paths[++i])
+		free(paths[i]);
+	free(paths);
 	return (0);
 }
 

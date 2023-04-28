@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: phelebra <phelebra@student.42.fr>          +#+  +:+       +#+         #
+#    By: phelebra <xhelp00@gmail.com>               +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/04/11 17:20:39 by phelebra          #+#    #+#              #
-#    Updated: 2023/04/28 13:44:59 by phelebra         ###   ########.fr        #
+#    Updated: 2023/04/28 20:43:16 by phelebra         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,7 +19,7 @@ RED		:= \033[31;1m
 GREEN	:= \033[32;1m
 RESET	:= \033[0m
 OBJ = obj/main.o obj/utils.o
-OBJ_BONUS = obj/utils.o obj/bonus.o
+OBJ_BONUS = obj/utils.o obj/bonus.o obj/utils_bonus.o
 LIBFT = obj/libft/libft.o
 LIBFT_DIR = src/libft
 NAME_H = include/pipex.h
