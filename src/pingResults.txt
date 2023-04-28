@@ -1,9 +1,0 @@
-PING google.com (142.251.36.110): 56 data bytes
-64 bytes from 142.251.36.110: icmp_seq=0 ttl=120 time=3.475 ms
-64 bytes from 142.251.36.110: icmp_seq=1 ttl=120 time=1.328 ms
-64 bytes from 142.251.36.110: icmp_seq=2 ttl=120 time=1.313 ms
-
---- google.com ping statistics ---
-3 packets transmitted, 3 packets received, 0.0% packet loss
-round-trip min/avg/max/stddev = 1.313/2.039/3.475/1.016 ms
-0/3.568/1.010 ms
