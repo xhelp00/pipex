@@ -6,7 +6,7 @@
 /*   By: phelebra <phelebra@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/21 16:34:45 by phelebra          #+#    #+#             */
-/*   Updated: 2023/05/02 12:56:01 by phelebra         ###   ########.fr       */
+/*   Updated: 2023/05/02 13:10:56 by phelebra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,6 @@ int	dup_close(int src, int dst)
 		return (1);
 	}	
 	dup2(src, dst);
-	printf("CHECK\n");
 	close(src);
 	return (0);
 }
@@ -99,7 +98,6 @@ int	main(int ac, char **av, char **env)
 		i = 2;
 		file[1] = open_file(av[ac - 1], 1);
 		file[0] = open_file(av[1], 2);
-		printf("in = %i, out = %i\n", file[0], file[1]);
 		if (dup_close(file[0], STDIN_FILENO) == 1)
 			return (1);
 	}

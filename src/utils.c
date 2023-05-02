@@ -6,7 +6,7 @@
 /*   By: phelebra <phelebra@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/21 16:34:32 by phelebra          #+#    #+#             */
-/*   Updated: 2023/05/02 13:01:01 by phelebra         ###   ########.fr       */
+/*   Updated: 2023/05/02 13:12:49 by phelebra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,7 @@ void	execute(char *argv, char **env)
 		while (cmd[++i])
 			free(cmd[i]);
 		free(cmd);
-		return ;
+		exit (EXIT_FAILURE);
 	}
 }
 
