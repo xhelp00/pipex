@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   pipex.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: phelebra <xhelp00@gmail.com>               +#+  +:+       +#+        */
+/*   By: phelebra <phelebra@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/12 09:08:46 by phelebra          #+#    #+#             */
-/*   Updated: 2023/04/28 21:00:49 by phelebra         ###   ########.fr       */
+/*   Updated: 2023/05/02 11:05:18 by phelebra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,9 @@
 # define WRITE_END	1
 
 int		error(void);
-int		arg_error(void);
+void	arg_error(int flag);
 void	execute(char *argv, char **env);
+int		open_file(char *argv, int i);
 
 /* bonus */
 int		ft_get_next_line(char **line);

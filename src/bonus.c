@@ -6,7 +6,7 @@
 /*   By: phelebra <phelebra@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/21 16:34:45 by phelebra          #+#    #+#             */
-/*   Updated: 2023/05/02 09:27:19 by phelebra         ###   ########.fr       */
+/*   Updated: 2023/05/02 11:01:30 by phelebra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ void	here_doc(char *limiter, int ac)
 	char	*line;
 
 	if (ac < 6)
-		arg_error();
+		arg_error(1);
 	if (pipe(fd) == -1)
 		error();
 	pid = fork();
@@ -86,14 +86,14 @@ int	main(int ac, char **av, char **env)
 		if (ft_strncmp(av[1], "here_doc", 8) == 0)
 		{
 			i = 3;
-			outfile = open(av[ac - 1], O_WRONLY | O_CREAT | O_APPEND | 0777);
+			outfile = open_file(av[ac - 1], 0);
 			here_doc(av[2], ac);
 		}
 		else
 		{
 			i = 2;
-			outfile = open(av[ac - 1], O_WRONLY | O_CREAT | O_TRUNC | 0777);
-			infile = open(av[1], O_RDONLY | O_CLOEXEC, 0777);
+			outfile = open_file(av[ac - 1], 1);
+			infile = open_file(av[1], 2);
 			dup_close(infile, STDIN_FILENO);
 		}
 		while (i < ac - 2)
@@ -101,5 +101,5 @@ int	main(int ac, char **av, char **env)
 		dup2(outfile, STDOUT_FILENO);
 		execute(av[ac - 2], env);
 	}
-	arg_error();
+	arg_error(1);
 }

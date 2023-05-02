@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: phelebra <xhelp00@gmail.com>               +#+  +:+       +#+        */
+/*   By: phelebra <phelebra@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/21 16:34:32 by phelebra          #+#    #+#             */
-/*   Updated: 2023/04/28 21:16:06 by phelebra         ###   ########.fr       */
+/*   Updated: 2023/05/02 10:59:23 by phelebra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,10 +18,14 @@ int	error(void)
 	return (1);
 }
 
-int	arg_error(void)
+void	arg_error(int flag)
 {
-	ft_putstr_fd("Error: Bad arguments\n", 2);
-	return (2);
+	ft_putstr_fd("Error: Command not found\n", 2);
+	if (flag)
+		ft_putstr_fd("Usage: ./bonus here_doc LIMITATOR cmd1 cmd2 outfile\n", 1);
+	else
+		ft_putstr_fd("Usage: ./pipex infile cmd1 cmd2 outfile\n", 1);
+	exit(EXIT_SUCCESS);
 }
 
 char	*find_path(char *cmd, char **env)
@@ -60,4 +64,20 @@ void	execute(char *argv, char **env)
 	cmd = ft_split(argv, ' ');
 	if (execve(find_path(cmd[0], env), cmd, env) == -1)
 		error();
+}
+
+int	open_file(char *argv, int i)
+{
+	int	file;
+
+	file = 0;
+	if (i == 0)
+		file = open(argv, O_WRONLY | O_CREAT | O_APPEND | O_CLOEXEC, 0777);
+	else if (i == 1)
+		file = open(argv, O_WRONLY | O_CREAT | O_TRUNC | O_CLOEXEC, 0777);
+	else if (i == 2)
+		file = open(argv, O_RDONLY | O_CLOEXEC, 0777);
+	if (file == -1)
+		error();
+	return (file);
 }

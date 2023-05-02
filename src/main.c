@@ -6,7 +6,7 @@
 /*   By: phelebra <phelebra@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/19 15:17:47 by phelebra          #+#    #+#             */
-/*   Updated: 2023/04/28 16:11:04 by phelebra         ###   ########.fr       */
+/*   Updated: 2023/05/02 11:00:05 by phelebra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,7 @@ void	child(char **argv, char **env, int *fd)
 {
 	int	infile;
 
-	infile = open(argv[1], O_RDONLY, 0777);
-	if (infile == -1)
-		error();
+	infile = open_file(argv[1], 2);
 	dup2(fd[WRITE_END], STDOUT_FILENO);
 	close(fd[WRITE_END]);
 	dup2(infile, STDIN_FILENO);
@@ -31,9 +29,7 @@ void	parent(char **argv, char **env, int *fd)
 {
 	int	outfile;
 
-	outfile = open(argv[4], O_WRONLY | O_CREAT, 0777);
-	if (outfile == -1)
-		error();
+	outfile = open_file(argv[4], 1);
 	dup2(fd[READ_END], STDIN_FILENO);
 	close(fd[READ_END]);
 	dup2(outfile, STDOUT_FILENO);
@@ -60,6 +56,6 @@ int	main(int argc, char *argv[], char *env[])
 		parent(argv, env, fd);
 	}
 	else
-		arg_error();
+		arg_error(0);
 	return (0);
 }

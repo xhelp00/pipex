@@ -3,17 +3,17 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: phelebra <xhelp00@gmail.com>               +#+  +:+       +#+         #
+#    By: phelebra <phelebra@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/04/11 17:20:39 by phelebra          #+#    #+#              #
-#    Updated: 2023/04/28 20:43:16 by phelebra         ###   ########.fr        #
+#    Updated: 2023/05/02 10:36:27 by phelebra         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = pipex
 BONUS = bonus
 CC = cc
-FLAGS = -g -Wall -Werror -Wextra
+FLAGS = -g #-Wall -Werror -Wextra
 BOLD	:= \033[1m
 RED		:= \033[31;1m
 GREEN	:= \033[32;1m
