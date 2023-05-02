@@ -6,7 +6,7 @@
 /*   By: phelebra <phelebra@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/21 16:34:45 by phelebra          #+#    #+#             */
-/*   Updated: 2023/05/02 11:01:30 by phelebra         ###   ########.fr       */
+/*   Updated: 2023/05/02 12:56:01 by phelebra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ void	child(char *av, char **env)
 	}
 }
 
-/* Function who make a child process that will read from the stdin with
+/* Function makes a child process that will read from the stdin with
  get_next_line until it find the limiter word and then put the output inside a
  pipe. The main process will change his stdin for the pipe file descriptor. */
 void	here_doc(char *limiter, int ac)
@@ -68,38 +68,43 @@ void	here_doc(char *limiter, int ac)
 	}
 }
 
-/* Makes a dup2 from the file given and then closes the file */
-void	dup_close(int src, int dst)
+int	dup_close(int src, int dst)
 {
+	if (src == -1)
+	{
+		perror("Error");
+		return (1);
+	}	
 	dup2(src, dst);
+	printf("CHECK\n");
 	close(src);
+	return (0);
 }
 
 int	main(int ac, char **av, char **env)
 {
 	int	i;
-	int	infile;
-	int	outfile;
+	int	file[2];
 
-	if (ac >= 5)
+	if (ac < 5)
+		arg_error(1);
+	if (ft_strncmp(av[1], "here_doc", 8) == 0)
 	{
-		if (ft_strncmp(av[1], "here_doc", 8) == 0)
-		{
-			i = 3;
-			outfile = open_file(av[ac - 1], 0);
-			here_doc(av[2], ac);
-		}
-		else
-		{
-			i = 2;
-			outfile = open_file(av[ac - 1], 1);
-			infile = open_file(av[1], 2);
-			dup_close(infile, STDIN_FILENO);
-		}
-		while (i < ac - 2)
-			child(av[i++], env);
-		dup2(outfile, STDOUT_FILENO);
-		execute(av[ac - 2], env);
+		i = 3;
+		file[1] = open_file(av[ac - 1], 0);
+		here_doc(av[2], ac);
 	}
-	arg_error(1);
+	else
+	{
+		i = 2;
+		file[1] = open_file(av[ac - 1], 1);
+		file[0] = open_file(av[1], 2);
+		printf("in = %i, out = %i\n", file[0], file[1]);
+		if (dup_close(file[0], STDIN_FILENO) == 1)
+			return (1);
+	}
+	while (i < ac - 2)
+		child(av[i++], env);
+	dup2(file[1], STDOUT_FILENO);
+	execute(av[ac - 2], env);
 }
