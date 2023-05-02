@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   bonus.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: phelebra <xhelp00@gmail.com>               +#+  +:+       +#+        */
+/*   By: phelebra <phelebra@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/21 16:34:45 by phelebra          #+#    #+#             */
-/*   Updated: 2023/04/28 21:01:20 by phelebra         ###   ########.fr       */
+/*   Updated: 2023/05/02 09:27:19 by phelebra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,8 +62,8 @@ void	here_doc(char *limiter, int ac)
 	}
 	else
 	{
-		close(fd[WRITE_END]);
 		dup2(fd[READ_END], STDIN_FILENO);
+		close(fd[WRITE_END]);
 		wait(NULL);
 	}
 }
